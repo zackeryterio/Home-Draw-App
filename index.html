@@ -1,0 +1,49 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HomeDraw - Real-Time Drawing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { margin: 0; overflow: hidden; }
+        #menu {
+            position: absolute; top: 20px; left: 20px;
+            background: rgba(255,255,255,0.9); padding: 20px;
+            border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            width: 300px; z-index: 100;
+        }
+        .hidden { display: none; }
+        #canvas {
+            position: absolute; top: 0; left: 0;
+            cursor: crosshair; background: pink;
+        }
+        button { margin: 5px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    
+    <div id="menu">
+        <h2>🎨 HomeDraw</h2>
+        <p>Your Token: <span id="token">LOADING...</span></p>
+        
+        <div id="timezoneDiv">
+            <select id="timezone">
+                <option>UTC</option><option>EST</option><option>PST</option>
+            </select>
+        </div>
+        
+        <button onclick="setBg('pink')">Pink Theme</button>
+        <button onclick="setBg('blue')">Blue Theme</button>
+        
+        <input id="friendToken" placeholder="Friend's token" maxlength="6">
+        <button onclick="connect()">Connect</button>
+        <button onclick="clearCanvas()">Clear</button>
+        
+        <p id="status">Disconnected</p>
+    </div>
+
+    <script src="draw.js"></script>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+</body>
+</html>
